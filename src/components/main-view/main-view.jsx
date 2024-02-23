@@ -36,8 +36,6 @@ export const MainView = () => {
   }, [token]);
 
   if (!user) {
-    console.log("LoginView", LoginView)
-    console.log("SignupView", SignupView)
     return (
       <>
         <LoginView
@@ -56,7 +54,7 @@ export const MainView = () => {
     return (
       <>
         <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); setSelectedMovie(null); }}>Logout</button>
       </>
     );
   }
