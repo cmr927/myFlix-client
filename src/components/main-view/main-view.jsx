@@ -8,12 +8,21 @@ import Row from "react-bootstrap/Row";
 import PropTypes from "prop-types";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://movies-myflix-cmr927-6d25967ba551.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://movies-myflix-cmr927-6d25967ba551.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((doc) => {
@@ -51,23 +60,25 @@ export const MainView = () => {
           <>
             <Col>The list is empty </Col>
             <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-            return <div>The list is empty</div>;
+            return <div>The list is empty</div>
           </>
         ) : (
           <>
-            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            <div className="d-flex flex-row-reverse">
+              <button class="p-2" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            </div>
             {movies.map((movie) => (
               <Col className="mb-4" key={movie._id} md={3}>
                 <MovieCard
                   movie={movie}
                   onMovieClick={(newSelectedMovie) => {
-                    setSelectedMovie(newSelectedMovie);
+                    setSelectedMovie(newSelectedMovie)
                   }}></MovieCard>
               </Col>
             ))}
           </>)
 
-      };  </Row>)
+      }  </Row>)
 }
 // Here is where we define the prop constraints for the MainView
 MainView.propTypes = {}

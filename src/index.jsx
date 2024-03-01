@@ -6,8 +6,6 @@ import Container from "react-bootstrap/Container";
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 
-<<<<<<< Updated upstream
-=======
 const App = () => {
     return (
         <Container>
@@ -16,7 +14,6 @@ const App = () => {
     );
 };
 
->>>>>>> Stashed changes
 // Finds the root of your app
 const container = document.querySelector("#root");
 const root = createRoot(container);
