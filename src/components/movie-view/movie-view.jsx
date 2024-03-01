@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
+import "./movie-view.scss";
+
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
       {<div>
-        <img src={movie.ImagePath} />
+        <img className="w-100" src={movie.ImagePath} />
       </div>}
       <div>
         <span>Movie ID: </span>
@@ -50,7 +52,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Featured: </span>
         <span>{movie.Featured}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <button className="back-button" onClick={onBackClick}>Back</button>
     </div>
   );
 };
