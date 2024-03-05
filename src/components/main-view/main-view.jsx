@@ -5,6 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 export const MainView = () => {
@@ -54,18 +55,18 @@ export const MainView = () => {
         ) : selectedMovie ? (
           <Col md={8}>
             <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); setSelectedMovie(null); }}>Logout</button>
+            <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); setSelectedMovie(null); }}>Logout</Button>
           </Col>
         ) : movies.length === 0 ? (
           <>
             <Col>The list is empty </Col>
-            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
             return <div>The list is empty</div>
           </>
         ) : (
           <>
             <div className="d-flex flex-row-reverse">
-              <button class="p-2" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+              <Button className="p-2" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
             </div>
             {movies.map((movie) => (
               <Col className="mb-4" key={movie._id} md={3}>
