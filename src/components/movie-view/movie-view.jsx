@@ -1,10 +1,13 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "./movie-view.scss";
-
-import { Button } from "react-bootstrap";
-
 import PropTypes from "prop-types";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movie_id } = useParams();
+
+  const movie = movies.find((m) => m._id === movie_id);
+
   return (
     <div>
       {<div>
@@ -54,13 +57,16 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span className="fw-bold">Featured: </span>
         <span>{movie.Featured}</span>
       </div>
-      <Button onClick={onBackClick}>Back</Button>
+      <Link to={`/`}>
+        <button className="back-button">Back</button>
+      </Link>
     </div>
   );
 };
+
 // Here is where we define all the props constraints for the MovieView
 MovieView.propTypes = {
-  movie: PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
@@ -78,7 +84,5 @@ MovieView.propTypes = {
     ImagePath: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired,
     Actors: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
-
-}
+  })).isRequired,
+};
