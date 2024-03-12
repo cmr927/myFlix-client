@@ -1,56 +1,60 @@
+import "./movie-view.scss";
+
+import { Button } from "react-bootstrap";
+
 import PropTypes from "prop-types";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
       {<div>
-        <img src={movie.ImagePath} />
+        <img className="w-100" src={movie.ImagePath} />
       </div>}
       <div>
-        <span>Movie ID: </span>
+        <span className="fw-bold">Movie ID: </span>
         <span>{movie._id}</span>
       </div>
       <div>
-        <span>Title: </span>
+        <span className="fw-bold">Title: </span>
         <span>{movie.Title}</span>
       </div>
       <div>
-        <span>Year: </span>
+        <span className="fw-bold">Year: </span>
         <span>{movie.Year}</span>
       </div>
       <div>
-        <span>Description: </span>
+        <span className="fw-bold">Description: </span>
         <span>{movie.Description}</span>
       </div>
       <div>
-        <span>Genre Name: </span>
+        <span className="fw-bold">Genre Name: </span>
         <span>{movie.Genre.Name}</span>
       </div>
       <div>
-        <span>Genre Description: </span>
+        <span className="fw-bold">Genre Description: </span>
         <span>{movie.Genre.Description}</span>
       </div>
       <div>
-        <span>Director Name: </span>
+        <span className="fw-bold">Director Name: </span>
         <span>{movie.Director.Name}</span>
       </div>
       <div>
-        <span>Director Bio: </span>
+        <span className="fw-bold">Director Bio: </span>
         <span>{movie.Director.Bio}</span>
       </div>
       <div>
-        <span>Director Birth: </span>
+        <span className="fw-bold">Director Birth: </span>
         <span>{movie.Director.Birth.toUTCString()}</span>
       </div>{movie.Director.Death ?
         <div>
-          <span>Director Death: </span>
+          <span className="fw-bold">Director Death: </span>
           <span>{movie.Director.Death.toUTCString()}</span>
         </div> : <div> </div>}
       <div>
-        <span>Featured: </span>
+        <span className="fw-bold">Featured: </span>
         <span>{movie.Featured}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <Button onClick={onBackClick}>Back</Button>
     </div>
   );
 };
