@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Button, Form, Col, Row, Container } from "react-bootstrap";
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -31,58 +30,67 @@ export const SignupView = () => {
             } else {
                 alert("Signup failed");
             }
-        });
-    };
+        })
+            .catch((e) => {
+                alert("Something went wrong");
+            });
+    }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formSingupUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="6"
-                    placeholder="Username must be at least 6 characters"
-                />
-            </Form.Group>
+        <Container>
+            <Row>
+                <h2>Create your myFlix account</h2>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formSingupUsername">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            minLength="6"
+                            placeholder="Username must be at least 6 characters"
+                        />
+                    </Form.Group>
 
-            <Form.Group controlId="formSignupPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    minLength="8"
-                    placeholder="Password must be at least 8 characters"
-                />
-            </Form.Group>
+                    <Form.Group controlId="formSignupPassword">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            minLength="8"
+                            placeholder="Password must be at least 8 characters"
+                        />
+                    </Form.Group>
 
-            <Form.Group controlId="formSignupEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Email"
-                />
-            </Form.Group>
+                    <Form.Group controlId="formSignupEmail">
+                        <Form.Label>Email:</Form.Label>
+                        <Form.Control
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            placeholder="Email"
+                        />
+                    </Form.Group>
 
-            <Form.Group controlId="formSignupBirthday">
-                <Form.Label>Birthday:</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+                    <Form.Group controlId="formSignupBirthday">
+                        <Form.Label>Birthday:</Form.Label>
+                        <Form.Control
+                            type="date"
+                            value={birthday}
+                            onChange={(e) => setBirthday(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Col className="mt-2">
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Col>
+                </Form>
+            </Row>
+        </Container>
     );
 };
