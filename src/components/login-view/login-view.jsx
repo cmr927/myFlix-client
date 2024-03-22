@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Button, Form, Col, Row, Container } from "react-bootstrap";
 
 export const LoginView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -38,33 +37,44 @@ export const LoginView = ({ onLoggedIn }) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="6"
-                    placeholder="Username"
-                />
-            </Form.Group>
+        <>
+            <Container>
+                <Row>
+                    <h2>Welcome to myFlix</h2>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="formUsername">
+                            <Form.Label>Username:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                                minLength="6"
+                                placeholder="Username"
+                            />
+                        </Form.Group>
 
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    minLength="8"
-                    placeholder="Password"
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+                        <Form.Group controlId="formPassword">
+                            <Form.Label>Password:</Form.Label>
+                            <Form.Control
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                minLength="8"
+                                placeholder="Password"
+                            />
+                        </Form.Group>
+
+                        <Col className="mt-2">
+                            <Button variant="primary" type="submit">
+                                Login
+                            </Button>
+                        </Col>
+
+                    </Form>
+                </Row>
+            </Container>
+        </>
     );
 };
