@@ -17,6 +17,7 @@ single movie by title to the user
 - Allow existing users to login and get a JWT token
 
 ## Link to Project
+https://cmr927-myflix.netlify.app
 
 ## Installation
 
