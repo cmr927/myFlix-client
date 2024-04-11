@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Col, Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const SignupView = () => {
+export const SignupView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -27,7 +27,26 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful");
-                window.location.reload();
+                fetch("https://movies-myflix-cmr927-6d25967ba551.herokuapp.com/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ username: data.Username, password: data.Password })
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.user) {
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                            localStorage.setItem("token", data.token);
+                            onLoggedIn(data.user, data.token);
+                        } else {
+                            alert("No such user");
+                        }
+                    })
+                    .catch((e) => {
+                        alert("Something went wrong");
+                    });
             } else {
                 alert("Signup failed");
             }
