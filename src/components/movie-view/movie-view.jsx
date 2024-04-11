@@ -1,13 +1,19 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import "./movie-view.scss";
 import PropTypes from "prop-types";
 import { Button, Card, Container, Col, Row } from "react-bootstrap";
+
+const dayjs = require('dayjs');
 
 export const MovieView = ({ movies, username, token, refreshUser }) => {
   const { movie_id } = useParams();
 
   const movie = movies.find((m) => m._id === movie_id);
+
+  const movieDirectorBirth = dayjs(movie.Director.Birth);
+
+  const movieDirectorDeath = dayjs(movie.Director.Death);
+
 
   const onClick = () => fetch(`https://movies-myflix-cmr927-6d25967ba551.herokuapp.com/users/${username}/movies/${movie_id}`, {
     method: "POST",
@@ -90,11 +96,11 @@ export const MovieView = ({ movies, username, token, refreshUser }) => {
           </div>
           <div>
             <span className="fw-bold">Director Birth: </span>
-            <span>{movie.Director.Birth.toUTCString()}</span>
+            <span>{movieDirectorBirth.format('dddd, MMMM DD, YYYY')}</span>
           </div>{movie.Director.Death ?
             <div>
               <span className="fw-bold">Director Death: </span>
-              <span>{movie.Director.Death.toUTCString()}</span>
+              <span>{movieDirectorDeath.format('dddd, MMMM DD, YYYY')}</span>
             </div> : <div> </div>}
           <div>
             <span className="fw-bold">Featured: </span>

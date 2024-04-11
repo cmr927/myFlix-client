@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 
 export const DeregisterUser = ({ username, token, onLoggedOut }) => {
     const [theusername, setUsername] = useState(username);
@@ -35,8 +36,8 @@ export const DeregisterUser = ({ username, token, onLoggedOut }) => {
             });
     }
     return (
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        <Link onClick={handleSubmit}>
             Permanently delete your account
-        </Button>
+        </Link>
     );
 }
