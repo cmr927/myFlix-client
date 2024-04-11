@@ -85,7 +85,10 @@ export const MainView = () => {
                     <Navigate to="/" />
                   ) : (
                     <Col md={5}>
-                      <SignupView />
+                      <SignupView onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token)
+                      }} />
                     </Col>
                   )}
                 </>
@@ -142,7 +145,6 @@ export const MainView = () => {
               path="/"
               element={
                 <>
-
                   <Row>
                     <Col className="mb-3 mt-3" sm={5} md={4}>
                       <MoviesFilter setFilter={setFilter}
@@ -163,8 +165,6 @@ export const MainView = () => {
                       ))}
                     </>
                   )}
-
-
                 </>
               }
             />
