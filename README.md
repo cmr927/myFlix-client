@@ -1,9 +1,9 @@
-# myFlix-client
-This is a web application built with React, which provides users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
+# myFlix 
 
-# Link to Project
+## Description
+myFlix is a single-page web application built with React, which provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies.
 
-# Features
+## Features
 - Return a list of ALL movies to the user
 - Return data (description, genre, director, image URL, whether it’s featured or not) about a
 single movie by title to the user
@@ -16,12 +16,66 @@ single movie by title to the user
 - Allow existing users to deregister
 - Allow existing users to login and get a JWT token
 
-# Installation
+## Link to Project
 
-# Dependencies
-- "react": "^18.2.0",
-- "react-dom": "^18.2.0"
-- "@parcel/transformer-sass": "^2.11.0",
-- "process": "^0.11.10"
+## Installation
 
-# Authentication
+1. Clone the repository:
+
+   ```
+   https://github.com/cmr927/myflix-client.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```
+   cd myflix-client
+   ```
+
+3. Install dependencies:
+   ```
+   npm install
+   ```
+
+## Usage
+
+To start the application, run the following command:
+
+```
+npm start
+```
+
+This will launch the application in your default web browser.
+
+## Components
+-  **MainView**: Parent component serving as the "main" component where child components will render.
+-  **NavigationBar**: Provides dynamic navigation based on user authentication status.
+-  **MovieView**: Displays detailed information about movies.
+-  **MovieCard**: Represents a single movie in a card format, showing key details and allowing users to add or remove the movie as favorite.
+-  **SignupView & LoginView**: Handle user registration and authentication.
+-  **ProfileView**: Allows users to view and edit their profile, manage favorite movies, change passwords, and delete accounts.
+
+## Dependencies
+- bootstrap: ^5.3.3
+- dayjs: ^1.11.10
+- prop-types: ^15.8.1
+- react: ^18.2.0
+- react-bootstrap: ^2.10.1
+- react-dom: ^18.2.0
+- react-router: ^6.22.3
+- react-router-dom: ^6.22.3
+
+## Developer Dependencies
+- @parcel/transformer-sass: ^2.11.0
+- parcel: ^2.11.0
+- process: ^0.11.10
+
+## Server-Side (backend) API
+
+myFlix interacts with [myFlix API](https://github.com/cmr927/myflix), a custom API that contains all data relevant to the myFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more. Please refer to the API Documentation above for information on API endpoints and data formats.
+
+## Authentication
+This API uses JWT for authentication. All endpoints require a valid JWT token in the Authorization header.
+
+## License
+This project is licensed under the terms of the [ISC License](https://opensource.org/licenses/ISC).

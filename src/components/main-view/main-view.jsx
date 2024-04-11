@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { MoviesFilter } from "../movies-filter/movies-filter";
 import { Col, Row, Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -15,6 +16,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [filter, setFilter] = useState("");
   const onLoggedOut = () => {
     setUser(null);
     setToken(null);
@@ -59,7 +61,11 @@ export const MainView = () => {
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));
       })
-  }
+  };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.Title.toLowerCase().includes(filter)
+  );
 
   return (
     <Container>
@@ -68,6 +74,7 @@ export const MainView = () => {
           user={user}
           onLoggedOut={onLoggedOut}
         />
+
         <Row className="justify-content-md-center">
           <Routes>
             <Route
@@ -135,19 +142,29 @@ export const MainView = () => {
               path="/"
               element={
                 <>
+
+                  <Row>
+                    <Col className="mb-3 mt-3" sm={5} md={4}>
+                      <MoviesFilter setFilter={setFilter}
+                        filter={filter}>
+                      </MoviesFilter>
+                    </Col>
+                  </Row>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
+                  ) : filteredMovies.length === 0 ? (
                     <Col>The list is empty!</Col>
                   ) : (
                     <>
-                      {movies.map((movie) => (
+                      {filteredMovies.map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3} sm={6}>
                           <MovieCard movie={movie} />
                         </Col>
                       ))}
                     </>
                   )}
+
+
                 </>
               }
             />
