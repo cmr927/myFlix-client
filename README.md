@@ -57,19 +57,19 @@ This will launch the application in your default web browser.
 -  **ProfileView**: Allows users to view and edit their profile, manage favorite movies, change passwords, and delete accounts.
 
 ## Dependencies
-- bootstrap: ^5.3.3
-- dayjs: ^1.11.10
-- prop-types: ^15.8.1
-- react: ^18.2.0
-- react-bootstrap: ^2.10.1
-- react-dom: ^18.2.0
-- react-router: ^6.22.3
-- react-router-dom: ^6.22.3
+- bootstrap
+- dayjs
+- prop-types
+- react
+- react-bootstrap
+- react-dom
+- react-router
+- react-router-dom
 
 ## Developer Dependencies
-- @parcel/transformer-sass: ^2.11.0
-- parcel: ^2.11.0
-- process: ^0.11.10
+- @parcel/transformer-sass
+- parcel
+- process
 
 ## Server-Side (backend) API
 
