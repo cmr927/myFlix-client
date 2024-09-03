@@ -61,18 +61,10 @@ This will launch the application in your default web browser.
 - dayjs
 - prop-types
 - react
-- react-bootstrap
-- react-dom
-- react-router
-- react-router-dom
-
-## Developer Dependencies
-- @parcel/transformer-sass
 - parcel
 - process
 
 ## Server-Side (backend) API
-
 myFlix interacts with [myFlix API](https://github.com/cmr927/myflix), a custom API that contains all data relevant to the myFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more. Please refer to the API Documentation above for information on API endpoints and data formats.
 
 ## Authentication
