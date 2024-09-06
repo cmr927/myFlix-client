@@ -1,4 +1,4 @@
-# myFlix 
+# myFlix (React)
 
 ## Description
 myFlix is a single-page web application built with React, which provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies.
