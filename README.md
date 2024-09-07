@@ -1,11 +1,11 @@
-# myFlix (React)
+# MyFlix (React)
 
 ## Description
-myFlix is a single-page web application built with React, which provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies.
+MyFlix is a single-page web application built with React, which provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies.
 
 ## Features
 - Return a list of ALL movies to the user
-- Return data (description, genre, director, image URL, whether it’s featured or not) about a
+- Return data (description, genre, director, image URL, whether it’s favorited or not) about a
 single movie by title to the user
 - Return data about a genre (description) by name/title (e.g., “Thriller”)
 - Return data about a director (bio, birth year, death year) by name
@@ -65,7 +65,7 @@ This will launch the application in your default web browser.
 - process
 
 ## Server-Side (backend) API
-myFlix interacts with [myFlix API](https://github.com/cmr927/myflix), a custom API that contains all data relevant to the myFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more. Please refer to the API Documentation above for information on API endpoints and data formats.
+MyFlix interacts with [MyFlix API](https://github.com/cmr927/myflix), a custom API that contains all data relevant to the MyFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more. Please refer to the API Documentation above for information on API endpoints and data formats.
 
 ## Authentication
 This API uses JWT for authentication. All endpoints require a valid JWT token in the Authorization header.
